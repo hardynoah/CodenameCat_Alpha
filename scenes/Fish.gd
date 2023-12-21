@@ -24,7 +24,6 @@ func _physics_process(_delta):
 		$FishSprite.position.y -= 20.0
 		if !timerStarted:
 			delete_fish()
-		print($FishTimer.time_left)
 
 func _on_collect_area_body_entered(body):
 	if body.name.match("Cat"):
