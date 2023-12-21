@@ -1,14 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://bgs6t3erenu3r"]
+[gd_scene load_steps=24 format=3 uid="uid://bgs6t3erenu3r"]
 
 [ext_resource type="Texture2D" uid="uid://iwgrs10otmw6" path="res://Cat_Anims/AnimateCatTail-Sheet.png" id="2_v483k"]
-[ext_resource type="PackedScene" uid="uid://cljpuxwkc20tx" path="res://jump_dust.tscn" id="3_0w6rm"]
+[ext_resource type="Script" path="res://scenes/Node2D.gd" id="3_6bmp4"]
 [ext_resource type="Texture2D" uid="uid://unw6fjp8fxvw" path="res://Cat_Anims/AnimateCatRunning-Sheet2.png" id="4_qsh5v"]
 
 [sub_resource type="GDScript" id="GDScript_m6aer"]
 script/source = "extends CharacterBody2D
 
 @onready var sprite_2d = $CatSprite
-@onready var jumpParticles = $Node2D/JumpDust
 
 # Main movement vars
 const SPEED = 300.0
@@ -48,13 +47,9 @@ func _physics_process(delta):
 	if (was_on_floor and !is_on_floor()):
 		$CoyoteTimer.start()
 		coyote_jump = true
-		
-	if (!was_on_floor and is_on_floor()):
-		jumpParticles.emitting = true
-		
+
 	# Handle jump.
 	if Input.is_action_just_pressed(\"jump\") and (is_on_floor() or coyote_jump):
-		#jumpParticles.emitting = true
 		velocity.y = JUMP_VELOCITY
 		was_on_floor = false
 		coyote_jump = false
@@ -66,12 +61,9 @@ func _physics_process(delta):
 		was_on_floor = is_on_floor()
 	
 	if (is_on_floor() and jump_buffer):
-		#jumpParticles.emitting = true
 		velocity.y = JUMP_VELOCITY
 		was_on_floor = false
 		coyote_jump = false
-		
-	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -240,6 +232,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j718q"]
 size = Vector2(23.3333, 30)
 
+[sub_resource type="Curve" id="Curve_qlytx"]
+_data = [Vector2(0.0041841, 1), 0.0, 0.0, 0, 0, Vector2(0.694561, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.995816, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Cat" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = SubResource("GDScript_m6aer")
@@ -265,9 +261,22 @@ wait_time = 0.15
 one_shot = true
 
 [node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("3_6bmp4")
 
-[node name="JumpDust" parent="Node2D" instance=ExtResource("3_0w6rm")]
-position = Vector2(96, 150.333)
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
+position = Vector2(95.6667, 146.667)
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+direction = Vector2(0, 1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_qlytx")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
