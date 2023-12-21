@@ -14,7 +14,7 @@ script/source = "extends CharacterBody2D
 # Main movement vars
 const SPEED = 300.0
 const SPRINT_SPEED = 400.0
-const JUMP_VELOCITY = -720.0
+const JUMP_VELOCITY = -800.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
@@ -257,8 +257,9 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j718q"]
-size = Vector2(23.3333, 30)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5rbeq"]
+radius = 10.3333
+height = 29.3333
 
 [node name="Cat" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -273,8 +274,10 @@ animation = &"jumping"
 autoplay = "default"
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
-position = Vector2(96, 135)
-shape = SubResource("RectangleShape2D_j718q")
+position = Vector2(95.6667, 135)
+shape = SubResource("CapsuleShape2D_5rbeq")
+one_way_collision_margin = 3.0
+debug_color = Color(0.121569, 0.592157, 0.721569, 0.419608)
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
