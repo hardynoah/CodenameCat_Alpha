@@ -27,10 +27,10 @@ var jump_buffer = false
 
 func _physics_process(delta):
 	#Animations
-	if (velocity.x > 1):
+	if (velocity.x > 0):
 		sprite_2d.animation = \"running2\"
 		sprite_2d.flip_h = false
-	elif (velocity.x < -1):
+	elif (velocity.x < 0):
 		sprite_2d.animation = \"running2\"
 		var isLeft = velocity.x < 0
 		sprite_2d.flip_h = isLeft
@@ -49,12 +49,12 @@ func _physics_process(delta):
 		$CoyoteTimer.start()
 		coyote_jump = true
 		
-	if (!was_on_floor and is_on_floor()):
-		jumpParticles.emitting = true
+	#if (!was_on_floor and is_on_floor()):
+		#jumpParticles.emitting = true
 		
 	# Handle jump.
 	if Input.is_action_just_pressed(\"jump\") and (is_on_floor() or coyote_jump):
-		#jumpParticles.emitting = true
+		jumpParticles.emitting = true
 		velocity.y = JUMP_VELOCITY
 		was_on_floor = false
 		coyote_jump = false
@@ -66,7 +66,7 @@ func _physics_process(delta):
 		was_on_floor = is_on_floor()
 	
 	if (is_on_floor() and jump_buffer):
-		#jumpParticles.emitting = true
+		jumpParticles.emitting = true
 		velocity.y = JUMP_VELOCITY
 		was_on_floor = false
 		coyote_jump = false
@@ -267,7 +267,9 @@ one_shot = true
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="JumpDust" parent="Node2D" instance=ExtResource("3_0w6rm")]
-position = Vector2(96, 150.333)
+position = Vector2(96, 153.667)
+direction = Vector2(0, -10)
+spread = 180.0
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
