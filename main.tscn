@@ -490,10 +490,11 @@ position = Vector2(60, 271)
 scale = Vector2(2, 2)
 
 [node name="Fish" parent="." instance=ExtResource("4_ti5oh")]
+visibility_layer = 2
 position = Vector2(-813, 151)
 
 [node name="Fish2" parent="." instance=ExtResource("4_ti5oh")]
-position = Vector2(3, -15)
+position = Vector2(-49, 232)
 
 [node name="Fish3" parent="." instance=ExtResource("4_ti5oh")]
 position = Vector2(-429, 278)
