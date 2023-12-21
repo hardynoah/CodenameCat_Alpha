@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://bgs6t3erenu3r"]
+[gd_scene load_steps=26 format=3 uid="uid://bgs6t3erenu3r"]
 
+[ext_resource type="Texture2D" uid="uid://bo7j50gu63fpu" path="res://Cat_Anims/AnimateCatJumping-Sheet.png" id="2_qokeb"]
 [ext_resource type="Texture2D" uid="uid://iwgrs10otmw6" path="res://Cat_Anims/AnimateCatTail-Sheet.png" id="2_v483k"]
 [ext_resource type="PackedScene" uid="uid://cljpuxwkc20tx" path="res://jump_dust.tscn" id="3_0w6rm"]
 [ext_resource type="Texture2D" uid="uid://unw6fjp8fxvw" path="res://Cat_Anims/AnimateCatRunning-Sheet2.png" id="4_qsh5v"]
@@ -41,8 +42,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		sprite_2d.animation = \"jumping\"
 	elif not is_on_floor() and coyote_jump:
-		velocity.y += 0 * gravity * delta
+		velocity.y += 0
 		sprite_2d.animation = \"jumping\"
+	
+	if (velocity.y > 350):
+		sprite_2d.animation = \"falling\"
 	
 	#Allow Coyote Jump
 	if (was_on_floor and !is_on_floor()):
@@ -127,9 +131,13 @@ region = Rect2(160, 0, 32, 32)
 atlas = ExtResource("2_v483k")
 region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v3t3p"]
-atlas = ExtResource("4_qsh5v")
-region = Rect2(224, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fylyd"]
+atlas = ExtResource("2_qokeb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qivjt"]
+atlas = ExtResource("2_qokeb")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ea0dd"]
 atlas = ExtResource("4_qsh5v")
@@ -158,6 +166,10 @@ region = Rect2(128, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ln6af"]
 atlas = ExtResource("4_qsh5v")
 region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3t3p"]
+atlas = ExtResource("4_qsh5v")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_36ks7"]
 atlas = ExtResource("4_qsh5v")
@@ -193,7 +205,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v3t3p")
+"texture": SubResource("AtlasTexture_fylyd")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qivjt")
 }],
 "loop": true,
 "name": &"jumping",
@@ -249,7 +269,7 @@ texture_filter = 1
 position = Vector2(95.3334, 128)
 scale = Vector2(1.36458, 1.36458)
 sprite_frames = SubResource("SpriteFrames_ik2qe")
-animation = &"running2"
+animation = &"jumping"
 autoplay = "default"
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
