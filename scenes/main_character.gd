@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @onready var sprite_2d = $Sprite2D
 
-const SPEED = 350.0
-const SPRINT_SPEED = 4150.0
+const SPEED = 250.0
+const SPRINT_SPEED = 500.0
 const JUMP_VELOCITY = -720.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
