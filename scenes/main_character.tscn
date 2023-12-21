@@ -6,7 +6,7 @@
 [sub_resource type="GDScript" id="GDScript_m6aer"]
 script/source = "extends CharacterBody2D
 
-@onready var sprite_2d = $Sprite2D
+@onready var sprite_2d = $CatSprite
 
 const SPEED = 250.0
 const SPRINT_SPEED = 500.0
@@ -63,9 +63,12 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+func player():
+	pass
 
 func _on_coyote_timer_timeout():
 	coyote_jump = false
+
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45vx6"]
@@ -209,11 +212,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j718q"]
 size = Vector2(23.3333, 30)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Cat" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = SubResource("GDScript_m6aer")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CatSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(95.3334, 128)
 scale = Vector2(1.36458, 1.36458)
@@ -221,7 +224,7 @@ sprite_frames = SubResource("SpriteFrames_ik2qe")
 animation = &"running2"
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CatCollision" type="CollisionShape2D" parent="."]
 position = Vector2(96, 135)
 shape = SubResource("RectangleShape2D_j718q")
 
