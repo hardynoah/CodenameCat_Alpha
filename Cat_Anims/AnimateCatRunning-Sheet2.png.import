@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4w5tx0sa4bcf"
-path="res://.godot/imported/AnimateCatRunning-Sheet2.png-449f2066cb116e4e22c99b2fb550ec4b.ctex"
+uid="uid://unw6fjp8fxvw"
+path="res://.godot/imported/AnimateCatRunning-Sheet2.png-c706ce7c5278c0cd2ee6002a86f32f81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AnimateCatRunning-Sheet2.png"
-dest_files=["res://.godot/imported/AnimateCatRunning-Sheet2.png-449f2066cb116e4e22c99b2fb550ec4b.ctex"]
+source_file="res://Cat_Anims/AnimateCatRunning-Sheet2.png"
+dest_files=["res://.godot/imported/AnimateCatRunning-Sheet2.png-c706ce7c5278c0cd2ee6002a86f32f81.ctex"]
 
 [params]
 

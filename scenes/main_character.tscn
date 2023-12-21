@@ -1,34 +1,82 @@
 [gd_scene load_steps=22 format=3 uid="uid://bgs6t3erenu3r"]
 
-[ext_resource type="Script" path="res://scenes/main_character.gd" id="1_8sbnj"]
-[ext_resource type="Texture2D" uid="uid://bhprosl5gqxhu" path="res://AnimateCatTail-Sheet.png" id="2_v483k"]
-[ext_resource type="Texture2D" uid="uid://b4w5tx0sa4bcf" path="res://AnimateCatRunning-Sheet2.png" id="4_qsh5v"]
+[ext_resource type="Texture2D" uid="uid://iwgrs10otmw6" path="res://Cat_Anims/AnimateCatTail-Sheet.png" id="2_v483k"]
+[ext_resource type="Texture2D" uid="uid://unw6fjp8fxvw" path="res://Cat_Anims/AnimateCatRunning-Sheet2.png" id="4_qsh5v"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sja6d"]
+[sub_resource type="GDScript" id="GDScript_m6aer"]
+script/source = "extends CharacterBody2D
+
+@onready var sprite_2d = $Sprite2D
+
+const SPEED = 250.0
+const SPRINT_SPEED = 500.0
+const JUMP_VELOCITY = -720.0
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+
+func _physics_process(delta):
+	#Animations
+	if (velocity.x > 1):
+		sprite_2d.animation = \"running2\"
+		sprite_2d.flip_h = false
+	elif (velocity.x < -1):
+		sprite_2d.animation = \"running2\"
+		var isLeft = velocity.x < 0
+		sprite_2d.flip_h = isLeft
+	else:
+		sprite_2d.animation = \"default\"
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		sprite_2d.animation = \"jumping\"
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction = Input.get_axis(\"left\", \"right\")
+	var sprinting = Input.is_action_pressed(\"sprint\")
+	if direction && sprinting:
+		velocity.x = direction * SPRINT_SPEED
+	elif direction:
+			velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, 100)
+
+	move_and_slide()
+	
+	
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45vx6"]
 atlas = ExtResource("2_v483k")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yraty"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5q4x"]
 atlas = ExtResource("2_v483k")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qmd3q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aakml"]
 atlas = ExtResource("2_v483k")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vybtf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_txey3"]
 atlas = ExtResource("2_v483k")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ul5is"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejrjw"]
 atlas = ExtResource("2_v483k")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2f5ji"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_414wb"]
 atlas = ExtResource("2_v483k")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r8plx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8n1l"]
 atlas = ExtResource("2_v483k")
 region = Rect2(192, 0, 32, 32)
 
@@ -48,6 +96,10 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("4_qsh5v")
 region = Rect2(64, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hlmc"]
+atlas = ExtResource("4_qsh5v")
+region = Rect2(192, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q0buc"]
 atlas = ExtResource("4_qsh5v")
 region = Rect2(96, 0, 32, 32)
@@ -60,10 +112,6 @@ region = Rect2(128, 0, 32, 32)
 atlas = ExtResource("4_qsh5v")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6hlmc"]
-atlas = ExtResource("4_qsh5v")
-region = Rect2(192, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_36ks7"]
 atlas = ExtResource("4_qsh5v")
 region = Rect2(256, 0, 32, 32)
@@ -72,25 +120,25 @@ region = Rect2(256, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sja6d")
+"texture": SubResource("AtlasTexture_45vx6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yraty")
+"texture": SubResource("AtlasTexture_j5q4x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qmd3q")
+"texture": SubResource("AtlasTexture_aakml")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vybtf")
+"texture": SubResource("AtlasTexture_txey3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ul5is")
+"texture": SubResource("AtlasTexture_ejrjw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2f5ji")
+"texture": SubResource("AtlasTexture_414wb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r8plx")
+"texture": SubResource("AtlasTexture_y8n1l")
 }],
 "loop": true,
 "name": &"default",
@@ -120,6 +168,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6hlmc")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q0buc")
 }, {
 "duration": 1.0,
@@ -127,9 +178,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ln6af")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6hlmc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v3t3p")
@@ -147,7 +195,7 @@ size = Vector2(23.3333, 30)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(3, 3)
-script = ExtResource("1_8sbnj")
+script = SubResource("GDScript_m6aer")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
