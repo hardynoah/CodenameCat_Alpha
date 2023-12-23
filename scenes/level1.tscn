@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://b68tij4n22cd"]
 
 [ext_resource type="Texture2D" uid="uid://bymldcfmoodli" path="res://Sky.png" id="1_bjd20"]
-[ext_resource type="Texture2D" uid="uid://dek8km84ymv3c" path="res://Grass_Dirt.png" id="2_8vi21"]
+[ext_resource type="Texture2D" uid="uid://d0mgnr87uqlov" path="res://Grass_Dirt2.png" id="2_nbnfu"]
 [ext_resource type="PackedScene" uid="uid://bgs6t3erenu3r" path="res://scenes/cat.tscn" id="3_2735j"]
 [ext_resource type="PackedScene" uid="uid://bf8oih02cmr3q" path="res://scenes/box.tscn" id="4_6j2xy"]
 [ext_resource type="PackedScene" uid="uid://dptiwfj1bgnlf" path="res://scenes/fish.tscn" id="5_6wpcm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xeosi"]
-texture = ExtResource("2_8vi21")
+texture = ExtResource("2_nbnfu")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -102,3 +102,5 @@ position = Vector2(1402, 508)
 
 [node name="Fish3" parent="SceneObjects/FishGroup" instance=ExtResource("5_6wpcm")]
 position = Vector2(688, 619)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="SceneObjects"]

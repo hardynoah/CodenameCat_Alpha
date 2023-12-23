@@ -1,21 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://bf8oih02cmr3q"]
 
-[ext_resource type="Texture2D" uid="uid://ent3k3saj7oi" path="res://Objects/crate.png" id="1_aeme2"]
 [ext_resource type="Script" path="res://scenes/box.gd" id="1_g5fk1"]
+[ext_resource type="Texture2D" uid="uid://u5uktn0lndo5" path="res://Objects/Crate2.png" id="2_pan02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_heeop"]
 size = Vector2(42, 42)
 
-[node name="Box" type="RigidBody2D"]
-texture_filter = 1
-mass = 3.0
-lock_rotation = true
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_g5fk1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
-texture = ExtResource("1_aeme2")
+scale = Vector2(3, 3)
+texture = ExtResource("2_pan02")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.7, 1.7)
+scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_heeop")
