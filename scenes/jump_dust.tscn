@@ -8,7 +8,6 @@ point_count = 3
 
 [node name="JumpDust" type="CPUParticles2D"]
 texture_filter = 1
-position = Vector2(95.6667, 146.667)
 emitting = false
 amount = 10
 lifetime = 0.3

@@ -502,27 +502,26 @@ layer_0/tile_data = PackedInt32Array(1179648, 851968, 1, 1179649, 917504, 1, 117
 [node name="Cat" parent="SceneObjects" instance=ExtResource("3_q3co1")]
 z_index = 1
 texture_filter = 1
-position = Vector2(-22, 255)
-scale = Vector2(2, 2)
+position = Vector2(170, 513)
+scale = Vector2(2.5, 2.5)
 
 [node name="Camera2D" type="Camera2D" parent="SceneObjects/Cat"]
 texture_filter = 1
-position = Vector2(95.5, 135)
 scale = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
 [node name="Box" parent="SceneObjects" instance=ExtResource("4_bpewu")]
-position = Vector2(160, 28)
+position = Vector2(676, 525)
 
 [node name="FishGroup" type="Node" parent="SceneObjects"]
 
 [node name="Fish" parent="SceneObjects/FishGroup" instance=ExtResource("5_rg6nb")]
 visibility_layer = 2
-position = Vector2(-730, 174)
+position = Vector2(880, 544)
 
 [node name="Fish2" parent="SceneObjects/FishGroup" instance=ExtResource("5_rg6nb")]
-position = Vector2(83, 304)
+position = Vector2(301, 473)
 
 [node name="Fish3" parent="SceneObjects/FishGroup" instance=ExtResource("5_rg6nb")]
-position = Vector2(-344, 212)
+position = Vector2(563, 528)

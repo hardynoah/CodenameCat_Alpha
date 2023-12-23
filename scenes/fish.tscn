@@ -11,14 +11,12 @@ script = ExtResource("1_0671q")
 
 [node name="FishSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(860.5, 192.5)
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2, 2)
 texture = ExtResource("2_m27uy")
 
 [node name="Collect_Area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collect_Area"]
-position = Vector2(860.5, 195)
 shape = SubResource("RectangleShape2D_40yrj")
 
 [node name="FishTimer" type="Timer" parent="."]
