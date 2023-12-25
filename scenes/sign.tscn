@@ -1,37 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://djnfolo6pvmvl"]
+[gd_scene load_steps=6 format=3 uid="uid://djnfolo6pvmvl"]
 
 [ext_resource type="Texture2D" uid="uid://dlfgh321ev4i8" path="res://Objects/SignPost.png" id="1_aocaa"]
-[ext_resource type="Script" path="res://sign.gd" id="2_1qj26"]
+[ext_resource type="Script" path="res://scenes/sign.gd" id="2_1qj26"]
 [ext_resource type="Texture2D" uid="uid://dh3j1p0qh7owj" path="res://Objects/E.png" id="2_p6ana"]
+[ext_resource type="Theme" uid="uid://ctp7roil72gif" path="res://Fonts/mainFontTheme.tres" id="3_jy7n3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s2dsr"]
-size = Vector2(35, 29)
+size = Vector2(50, 30)
 
 [node name="Sign" type="Sprite2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("1_aocaa")
+script = ExtResource("2_1qj26")
 
-[node name="Label" type="Label" parent="."]
-visible = false
+[node name="SignText" type="Label" parent="."]
 texture_filter = 1
-offset_left = -11.0
-offset_top = -8.5
-offset_right = 13.0
-offset_bottom = 4.5
-rotation = 0.0485955
-theme_override_font_sizes/font_size = 8
-text = "WASD"
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.266
+anchor_right = 0.5
+anchor_bottom = -0.266
+offset_left = -52.0
+offset_top = -44.488
+offset_right = 94.0
+offset_bottom = 30.512
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_jy7n3")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
 [node name="InteractKey" type="Sprite2D" parent="."]
 texture = ExtResource("2_p6ana")
 offset = Vector2(0, -2)
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("2_1qj26")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_s2dsr")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
