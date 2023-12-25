@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bgs6t3erenu3r" path="res://scenes/cat.tscn" id="3_q3co1"]
 [ext_resource type="PackedScene" uid="uid://bf8oih02cmr3q" path="res://scenes/box.tscn" id="4_bpewu"]
 [ext_resource type="PackedScene" uid="uid://dptiwfj1bgnlf" path="res://scenes/fish.tscn" id="5_rg6nb"]
-[ext_resource type="AudioStream" uid="uid://bbmbc2hdtj03n" path="res://Music/Press Start  8 bit, chiptune, rpg.mp3" id="6_gu1gv"]
+[ext_resource type="PackedScene" uid="uid://b68tij4n22cd" path="res://scenes/level1.tscn" id="6_roavi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7vvei"]
 texture = ExtResource("2_bekh3")
@@ -484,10 +484,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -124.0
-offset_top = 180.0
-offset_right = 550.0
-offset_bottom = 316.0
+offset_left = -56.0
+offset_top = 194.0
+offset_right = -130.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_3qned")
@@ -503,28 +503,19 @@ layer_0/tile_data = PackedInt32Array(1179648, 851968, 1, 1179649, 917504, 1, 117
 [node name="Cat" parent="SceneObjects" instance=ExtResource("3_q3co1")]
 z_index = 1
 texture_filter = 1
-position = Vector2(149, 501)
-scale = Vector2(2, 2)
+position = Vector2(170, 513)
+scale = Vector2(2.5, 2.5)
 
 [node name="Camera2D" type="Camera2D" parent="SceneObjects/Cat"]
-process_mode = 3
 texture_filter = 1
-process_callback = 0
-limit_left = -1250
-limit_bottom = 800
+scale = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
 [node name="Box" parent="SceneObjects" instance=ExtResource("4_bpewu")]
-texture_filter = 1
 position = Vector2(676, 525)
 
 [node name="Fish" parent="SceneObjects" instance=ExtResource("5_rg6nb")]
 visibility_layer = 2
 position = Vector2(880, 544)
-nextLevel = "res://scenes/level1.tscn"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_gu1gv")
-autoplay = true
-attenuation = 0.1
+nextLevel = ExtResource("6_roavi")

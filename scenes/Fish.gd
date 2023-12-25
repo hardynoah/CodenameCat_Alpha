@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var nextLevel : String
+
 var player_in_area = false
 var collected = false
 var timerStarted = false
@@ -34,4 +36,5 @@ func delete_fish():
 		timerStarted = true
 
 func _on_fish_timer_timeout():
+	get_tree().change_scene_to_file(nextLevel)
 	queue_free()
