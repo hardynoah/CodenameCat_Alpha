@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2vr6vib885e0"]
+
+[ext_resource type="Texture2D" uid="uid://btq60hhsa6f6w" path="res://AbilitySprites/Jetpack.png" id="1_idk6d"]
+[ext_resource type="Script" path="res://scenes/BoxPack.gd" id="2_tlgs5"]
+[ext_resource type="AudioStream" uid="uid://bralbjtv6t7wq" path="res://SoundEffects/SetDownItem.mp3" id="3_mmpx1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wslx"]
+radius = 18.0
+
+[node name="Sprite2D" type="Sprite2D"]
+z_index = 1
+texture_filter = 1
+texture = ExtResource("1_idk6d")
+script = ExtResource("2_tlgs5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_5wslx")
+
+[node name="SetDownSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mmpx1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

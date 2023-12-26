@@ -14,7 +14,6 @@ func _ready():
 
 func _process(_delta):
 	if (player_in_area and !collected):
-		print("got it!")
 		collected = true
 	$FishSprite.position.y += dir * 0.05
 	if($FishSprite.position.y >= (startY + 5.0) or $FishSprite.position.y <= (startY - 5.0)):

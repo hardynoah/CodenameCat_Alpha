@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://6w5kmr0dsspk"]
 
-[ext_resource type="Texture2D" uid="uid://brvdl083qt7we" path="res://Green.png" id="1_3qned"]
-[ext_resource type="Texture2D" uid="uid://bheie7s4pajbh" path="res://Terrain (16x16).png" id="2_bekh3"]
+[ext_resource type="Texture2D" uid="uid://brvdl083qt7we" path="res://TileSprites/Green.png" id="1_3qned"]
+[ext_resource type="Texture2D" uid="uid://bheie7s4pajbh" path="res://TileSprites/Terrain (16x16).png" id="2_bekh3"]
 [ext_resource type="PackedScene" uid="uid://bgs6t3erenu3r" path="res://scenes/cat.tscn" id="3_q3co1"]
 [ext_resource type="PackedScene" uid="uid://bf8oih02cmr3q" path="res://scenes/box.tscn" id="4_bpewu"]
 [ext_resource type="PackedScene" uid="uid://dptiwfj1bgnlf" path="res://scenes/fish.tscn" id="5_rg6nb"]

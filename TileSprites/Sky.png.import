@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0mgnr87uqlov"
-path="res://.godot/imported/Grass_Dirt2.png-fb23e4cadc9b1f4b69e6d6cdd4c5c8c5.ctex"
+uid="uid://bymldcfmoodli"
+path="res://.godot/imported/Sky.png-d858515526250b6652cc234d80d3f657.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Grass_Dirt2.png"
-dest_files=["res://.godot/imported/Grass_Dirt2.png-fb23e4cadc9b1f4b69e6d6cdd4c5c8c5.ctex"]
+source_file="res://TileSprites/Sky.png"
+dest_files=["res://.godot/imported/Sky.png-d858515526250b6652cc234d80d3f657.ctex"]
 
 [params]
 

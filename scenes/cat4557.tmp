@@ -1,19 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://bgs6t3erenu3r"]
+[gd_scene load_steps=26 format=3 uid="uid://bgs6t3erenu3r"]
 
 [ext_resource type="Texture2D" uid="uid://bo7j50gu63fpu" path="res://Cat_Anims/AnimateCatJumping-Sheet.png" id="2_qokeb"]
 [ext_resource type="Texture2D" uid="uid://iwgrs10otmw6" path="res://Cat_Anims/AnimateCatTail-Sheet.png" id="2_v483k"]
 [ext_resource type="PackedScene" uid="uid://cljpuxwkc20tx" path="res://scenes/jump_dust.tscn" id="4_op1g4"]
 [ext_resource type="Texture2D" uid="uid://unw6fjp8fxvw" path="res://Cat_Anims/AnimateCatRunning-Sheet2.png" id="4_qsh5v"]
-[ext_resource type="PackedScene" uid="uid://bswsta2xeq5g" path="res://scenes/box_pack_particles.tscn" id="5_vhg53"]
-[ext_resource type="AudioStream" uid="uid://cte4q3jw5hsx4" path="res://SoundEffects/BoxPackJump.mp3" id="6_4erj5"]
 
 [sub_resource type="GDScript" id="GDScript_m6aer"]
 script/source = "extends CharacterBody2D
 
 @onready var sprite_2d = $CatSprite
-@onready var jumpParticles = $Particles/JumpDust
-@onready var boxPackParticles = $BoxPack/BoxPackParticles
-@onready var boxPackJump = $BoxPack/BoxPackJump
+@onready var jumpParticles = $Node2D/JumpDust
+
 
 # Main movement vars
 @export var speed = 300.0
@@ -27,9 +24,7 @@ const JUMP_VELOCITY = -800.0
 var powerUpState = 0
 
 #BoxPack vars
-@export var jetForce = -1200.0
-var canJet = true
-var dir = 0
+@export var jetForce = -1000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
@@ -47,11 +42,10 @@ func _physics_process(delta):
 	if (velocity.x > 0):
 		sprite_2d.animation = \"running2\"
 		sprite_2d.flip_h = false
-		dir = 0
 	elif (velocity.x < 0):
 		sprite_2d.animation = \"running2\"
-		sprite_2d.flip_h = true
-		dir = 1
+		var isLeft = velocity.x < 0
+		sprite_2d.flip_h = isLeft
 	else:
 		if (velocity.y <= 0):
 			sprite_2d.animation = \"default\"
@@ -65,10 +59,6 @@ func _physics_process(delta):
 	
 	if (velocity.y > 350):
 		sprite_2d.animation = \"falling\"
-	
-	
-	tossAbility()
-	useAbilities()
 	
 	#Allow Coyote Jump
 	if (was_on_floor and !is_on_floor()):
@@ -99,6 +89,11 @@ func _physics_process(delta):
 	if (is_on_floor() and jump_buffer):
 		catJump()
 	
+	match powerUpState:
+		
+		1:
+			if Input.is_action_just_pressed(\"jump\") and (!is_on_floor() or !coyote_jump):
+		catJump()
 	
 	move_and_slide()
 	
@@ -108,7 +103,7 @@ func _physics_process(delta):
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 			
 	
-	if (position.y > 1000):
+	if (position.y > 10000):
 		position = Vector2(-500, 420)
 		velocity = Vector2(0,0)
 
@@ -126,22 +121,7 @@ func _on_coyote_timer_timeout():
 func _on_jump_buffer_timeout():
 	jump_buffer = false
 
-func useAbilities():
-	match powerUpState:
-		1:
-			if Input.is_action_just_pressed(\"jump\") and (not is_on_floor() and not coyote_jump) and canJet:
-				boxPackParticles.emitting = true
-				boxPackJump.play()
-				velocity.y = jetForce
-				was_on_floor = false
-				coyote_jump = false
-				canJet = false
-			elif (is_on_floor()):
-					canJet = true
 
-func tossAbility():
-	if Input.is_action_just_pressed(\"toss\") and is_on_floor():
-		powerUpState = 0
 
 func player():
 	pass
@@ -308,6 +288,8 @@ height = 20.0
 [node name="Cat" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = SubResource("GDScript_m6aer")
+speed = null
+push_force = null
 
 [node name="CatSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -330,32 +312,12 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
-[node name="Particles" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="JumpDust" parent="Particles" instance=ExtResource("4_op1g4")]
+[node name="JumpDust" parent="Node2D" instance=ExtResource("4_op1g4")]
 position = Vector2(0, 20)
-direction = Vector2(0, -10)
-spread = 180.0
-
-[node name="BoxPack" type="Node2D" parent="."]
-scale = Vector2(0.333333, 0.333333)
-
-[node name="BoxPackJump" type="AudioStreamPlayer" parent="BoxPack"]
-stream = ExtResource("6_4erj5")
-pitch_scale = 2.0
-
-[node name="BoxPackJumpTimer" type="Timer" parent="BoxPack"]
-wait_time = 0.15
-one_shot = true
-
-[node name="BoxPackParticles" parent="BoxPack" instance=ExtResource("5_vhg53")]
-position = Vector2(0, 48)
-scale = Vector2(3, 3)
-amount = 20
-emission_rect_extents = Vector2(6, 4)
 direction = Vector2(0, -10)
 spread = 180.0
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
-[connection signal="timeout" from="BoxPack/BoxPackJumpTimer" to="." method="_on_jump_buffer_timeout"]

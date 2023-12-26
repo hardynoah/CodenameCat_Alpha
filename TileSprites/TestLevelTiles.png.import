@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bheie7s4pajbh"
-path="res://.godot/imported/Terrain (16x16).png-f072e8a5f99e915c05031c83401c87a9.ctex"
+uid="uid://bam6pqvy3o8bj"
+path="res://.godot/imported/TestLevelTiles.png-4eeed63f87a19a1afd0ef62165f015b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Terrain (16x16).png"
-dest_files=["res://.godot/imported/Terrain (16x16).png-f072e8a5f99e915c05031c83401c87a9.ctex"]
+source_file="res://TileSprites/TestLevelTiles.png"
+dest_files=["res://.godot/imported/TestLevelTiles.png-4eeed63f87a19a1afd0ef62165f015b8.ctex"]
 
 [params]
 

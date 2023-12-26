@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bymldcfmoodli"
-path="res://.godot/imported/Sky.png-8c43aacd3d620d81964b518cb41623f6.ctex"
+uid="uid://c1u0oyfhcblya"
+path="res://.godot/imported/BoxJumpParticles.png-a1e5bdb706d24c534aa51fbff934b96a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sky.png"
-dest_files=["res://.godot/imported/Sky.png-8c43aacd3d620d81964b518cb41623f6.ctex"]
+source_file="res://AbilitySprites/BoxJumpParticles.png"
+dest_files=["res://.godot/imported/BoxJumpParticles.png-a1e5bdb706d24c534aa51fbff934b96a.ctex"]
 
 [params]
 

@@ -1,0 +1,149 @@
+[gd_scene load_steps=11 format=3 uid="uid://b68tij4n22cd"]
+
+[ext_resource type="Texture2D" uid="uid://bymldcfmoodli" path="res://TileSprites/Sky.png" id="1_hb454"]
+[ext_resource type="Texture2D" uid="uid://bam6pqvy3o8bj" path="res://TileSprites/TestLevelTiles.png" id="2_re5ya"]
+[ext_resource type="PackedScene" uid="uid://bgs6t3erenu3r" path="res://scenes/cat.tscn" id="3_sqohs"]
+[ext_resource type="AudioStream" uid="uid://bbmbc2hdtj03n" path="res://Music/Press Start  8 bit, chiptune, rpg.mp3" id="4_yfckh"]
+[ext_resource type="PackedScene" uid="uid://bf8oih02cmr3q" path="res://scenes/box.tscn" id="5_5sk26"]
+[ext_resource type="PackedScene" uid="uid://dptiwfj1bgnlf" path="res://scenes/fish.tscn" id="6_05m7j"]
+[ext_resource type="PackedScene" uid="uid://djnfolo6pvmvl" path="res://scenes/sign.tscn" id="7_2lsqc"]
+[ext_resource type="PackedScene" uid="uid://c2vr6vib885e0" path="res://scenes/BoxPack.tscn" id="7_ioxqc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vungy"]
+texture = ExtResource("2_re5ya")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+9:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, -8, -4)
+4:1/0/physics_layer_0/polygon_0/one_way = true
+4:1/0/physics_layer_0/polygon_0/one_way_margin = 3.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, -8, -4)
+5:1/0/physics_layer_0/polygon_0/one_way = true
+5:1/0/physics_layer_0/polygon_0/one_way_margin = 3.0
+6:1/0 = 0
+6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:1/0/physics_layer_0/angular_velocity = 0.0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, -8, -4)
+6:1/0/physics_layer_0/polygon_0/one_way = true
+6:1/0/physics_layer_0/polygon_0/one_way_margin = 3.0
+7:1/0 = 0
+7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:1/0/physics_layer_0/angular_velocity = 0.0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, -8, -4)
+7:1/0/physics_layer_0/polygon_0/one_way = true
+7:1/0/physics_layer_0/polygon_0/one_way_margin = 3.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_xi25s"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_vungy")
+
+[node name="Node" type="Node"]
+
+[node name="SceneObjects" type="Node" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="SceneObjects"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.177
+anchor_right = 0.3
+anchor_bottom = 0.177
+offset_left = -2530.0
+offset_top = -378.72
+offset_right = 1638.0
+offset_bottom = 684.28
+texture = ExtResource("1_hb454")
+
+[node name="TileMap" type="TileMap" parent="SceneObjects"]
+texture_filter = 1
+position = Vector2(-22, 4)
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_xi25s")
+format = 2
+layer_0/tile_data = PackedInt32Array(983018, 65537, 0, 983019, 65537, 0, 983020, 65537, 0, 983021, 65537, 0, 983022, 65537, 0, 983023, 65537, 0, 983024, 65537, 0, 983025, 65537, 0, 983026, 65537, 0, 983027, 65537, 0, 983028, 65537, 0, 983029, 65537, 0, 983030, 65537, 0, 1048554, 65537, 1, 1048555, 65537, 1, 1048556, 65537, 1, 1048557, 65537, 1, 1048566, 65537, 1, 1048565, 65537, 1, 1048564, 65537, 1, 1048563, 65537, 1, 1048562, 65537, 1, 1048561, 65537, 1, 1048560, 65537, 1, 1048559, 65537, 1, 1048558, 65537, 1, 786420, 262145, 1, 786421, 262145, 1, 786418, 262145, 1, 786419, 262145, 1, 851946, 327681, 1, 851947, 393217, 1, 851948, 458753, 1, 917494, 589825, 0, 917493, 589825, 0, 917492, 589825, 0, 917491, 589825, 0, 917490, 589825, 0, 917489, 589825, 0, 917488, 589825, 0, 917487, 589825, 0, 917486, 589825, 0, 917485, 589825, 0, 917484, 589825, 0, 917483, 589825, 0, 917482, 589825, 0, 983017, 1, 0, 1048553, 1, 1, 1048567, 131073, 1, 983031, 131073, 0, 917495, 589825, 0, 917481, 589825, 0, 983033, 65537, 0, 983034, 65537, 0, 983035, 65537, 0, 983036, 65537, 0, 917498, 65537, 3, 983032, 65537, 0, 983037, 65537, 0, 983038, 65537, 0, 983039, 65537, 0, 917504, 65537, 0, 917505, 65537, 0, 917506, 65537, 0, 917507, 65537, 0, 917501, 131073, 3, 851968, 196609, 3, 917479, 65537, 1, 720866, 65537, 1, 720865, 65537, 1, 786401, 65537, 1, 786402, 65537, 1, 917478, 65537, 1, 983015, 65537, 1, 983014, 65537, 1, 720856, 65537, 1, 720855, 65537, 1, 720854, 65537, 1, 786391, 65537, 1, 786392, 65537, 1, 786390, 65537, 1, 458702, 65537, 1, 458701, 65537, 1, 458700, 65537, 1, 524236, 65537, 1, 524237, 65537, 1, 524238, 65537, 1, 327619, 65537, 1, 327620, 65537, 1, 393155, 65537, 1, 393156, 65537, 1, 524221, 65537, 1, 524220, 65537, 1, 589757, 65537, 1, 589756, 65537, 1)
+
+[node name="Cat" parent="SceneObjects" instance=ExtResource("3_sqohs")]
+z_index = 1
+texture_filter = 1
+position = Vector2(-525, 383)
+scale = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="SceneObjects/Cat"]
+process_mode = 3
+texture_filter = 1
+offset = Vector2(0, -60)
+zoom = Vector2(0.5, 0.5)
+process_callback = 0
+limit_bottom = 800
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SceneObjects/Cat"]
+stream = ExtResource("4_yfckh")
+volume_db = -15.0
+autoplay = true
+
+[node name="Box" parent="SceneObjects" instance=ExtResource("5_5sk26")]
+texture_filter = 1
+position = Vector2(340, 245)
+
+[node name="Fish" parent="SceneObjects" instance=ExtResource("6_05m7j")]
+visibility_layer = 2
+position = Vector2(1173, 383)
+nextLevel = "res://scenes/level2.tscn"
+
+[node name="BoxPack" parent="SceneObjects" instance=ExtResource("7_ioxqc")]
+position = Vector2(-431, 415)
+
+[node name="AllSigns" type="Node" parent="."]
+
+[node name="Sign" parent="AllSigns" instance=ExtResource("7_2lsqc")]
+position = Vector2(174, 514)
+text = "Press E to interact with stuff"
+
+[node name="Sign2" parent="AllSigns" instance=ExtResource("7_2lsqc")]
+position = Vector2(420, 512)
+text = "Except boxes you can't interact with those yet"
+
+[node name="Sign3" parent="AllSigns" instance=ExtResource("7_2lsqc")]
+position = Vector2(956, 416)
+text = "I was a person and they turned me into a sign"
